@@ -30,7 +30,7 @@ class VehiculoController extends Controller
             $vehiculos=DB::table('vehiculo as ve')
             ->join('marca as m', 've.idmarca' , '=', 'm.idmarca')
             ->select('ve.idvehiculo','ve.marca','ve.patente','ve.venta','m.nombre as marca','m.descripcion','ve.imagen','ve.estado')
-            ->where('ve.nombre','LIKE','%'.$query.'%')
+            ->where('ve.marca','LIKE','%'.$query.'%')
            
             ->orderBy('ve.idmarca','asc')
             ->paginate(7);

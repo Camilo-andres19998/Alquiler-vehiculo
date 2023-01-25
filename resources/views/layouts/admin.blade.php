@@ -91,8 +91,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="alquiler/vehiculo"><i class="fa fa-circle-o"></i> Vehiculos</a></li>
-                <li><a href="alquiler/marca"><i class="fa fa-circle-o"></i> Marcas</a></li>
+                <li><a href="/alquiler/vehiculo"><i class="fa fa-circle-o"></i> Vehiculos</a></li>
+                <li><a href="/alquiler/marca"><i class="fa fa-circle-o"></i> Marcas</a></li>
               </ul>
             </li>
             
