@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('idvehiculo', true);
             $table->integer('idmarca')->nullable()->index('fk_vehiculo_marca_idx');
             $table->string('patente', 50)->nullable();
-            $table->string('marca', 100);
+          //  $table->string('marca', 100);
             $table->string('modelo', 100);
             $table->string('descripcion', 512)->nullable();
             $table->string('imagen', 50)->nullable();

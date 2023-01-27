@@ -27,12 +27,12 @@ class VehiculoController extends Controller
     {
         $texto=trim($request->get('texto'));
             $vehiculo=DB::table('vehiculo')
-            ->select('idvehiculo','idmarca','patente','marca','modelo','descripcion','imagen','estado','venta')
-            ->where('marca','LIKE','%'.$texto.'%')
+            ->select('idvehiculo','patente','modelo','descripcion','imagen','estado','venta')
+            ->where('modelo','LIKE','%'.$texto.'%')
            
-            ->orderBy('idmarca','asc')
-            ->paginate(5);
-        return view('alquiler.vehiculo.index', compact('vehiculo','texto'));
+            ->orderBy('idvehiculo','asc')
+            ->paginate(7);
+          return view('alquiler.vehiculo.index', compact('vehiculo','texto'));
         
     }
 
@@ -50,12 +50,12 @@ class VehiculoController extends Controller
     {   
     
         $inputs   = $request->all() ;
-  
+        //dd($inputs);
         $vehiculo = new Vehiculo;
-        $vehiculo->idmarca = $request->get('idmarca') ;
+        $vehiculo->idvehiculo = $request->get('idvehiculo') ;
         $vehiculo->patente = $request->get('patente') ;
         $vehiculo->modelo = $request->get('modelo') ;
-        $vehiculo->marca = $request->get('marca') ;
+        //$vehiculo->marca = $request->get('marca') ;
         $vehiculo->venta = $request->get('venta') ;
         $vehiculo->descripcion = $request->get('descripcion') ;
         $vehiculo->estado = "Activo" ;

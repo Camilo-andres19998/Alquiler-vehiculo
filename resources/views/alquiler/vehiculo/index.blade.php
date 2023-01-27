@@ -35,11 +35,12 @@
 	<div class="table-responsive">
 	<table class="table table-striped table-bordered table-condensed table-hover">
       	<thead>
-
-		  <th>Id</th>
+		            <th>IdVehiculo</th>
+		  
+		           
 					<th>Modelo</th>
 					<th>Patente</th>
-					<th>Marca</th>
+					
 					<th>Venta</th>
 					<th>Estado</th>
 					<th>Imagen</th>
@@ -56,13 +57,14 @@
             <tr> 
 				
 			       <td>{{ $ve->idvehiculo}}</td>
+				
 					<td>{{ $ve->modelo}}</td>
 					<td>{{ $ve->patente}}</td>
-					<td>{{ $ve->marca}}</td>
+					
 					<td>{{ $ve->venta}}</td>
 					<td>{{ $ve->estado}}</td>
 					<td>
-					<img src="{{asset('imagenes/vehiculo/'.$ve->imagen)}}" alt="{{ $ve->marca}}" height="100px" width="100px" class="img-thumbnail">
+					<img src="{{asset('imagenes/vehiculo/'.$ve->imagen)}}" alt="{{ $ve->idvehiculo}}" height="100px" width="100px" class="img-thumbnail">
                 
 					<td>
 

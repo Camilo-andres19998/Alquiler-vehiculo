@@ -40,14 +40,14 @@
 			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
             <div class="form-group">
             	<label for="estado">Estado</label>
-            	<input type="text" name="estado" require value="{{old('estado')}}" class="form-control" placeholder="Descripción...">
+            	<input type="text" name="estado" require value="{{$vehiculo->estado}}" class="form-control" placeholder="Descripción...">
             </div>
 			</div>
 
 			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
 			<div class="form-group">
             	<label for="patente">Patente</label>
-            	<input type="text" name="patente" value="{{old('patente')}}" class="form-control" placeholder="Descripción...">
+            	<input type="text" name="patente" value="{{$vehiculo->descripcion}}" class="form-control" placeholder="Descripción...">
             </div>
 			</div>
 

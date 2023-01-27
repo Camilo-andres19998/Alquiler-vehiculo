@@ -25,8 +25,8 @@ class VehiculoFormRequest extends FormRequest
     {
         return [
             
+            
             'patente'=>'required|max:50|unique:vehiculo',
-            'marca'=>'required|max:100',
             'modelo'=>'required|max:256',
             'venta'=>'required|numeric',
             'descripcion'=>'max:512',
