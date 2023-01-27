@@ -53,8 +53,9 @@
 			  </tr>
 			@else
 			@foreach ($vehiculo as $ve)
-            <tr>
-			<td>{{ $ve->idvehiculo}}</td>
+            <tr> 
+				
+			       <td>{{ $ve->idvehiculo}}</td>
 					<td>{{ $ve->modelo}}</td>
 					<td>{{ $ve->patente}}</td>
 					<td>{{ $ve->marca}}</td>

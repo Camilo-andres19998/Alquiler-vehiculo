@@ -27,7 +27,7 @@ class VehiculoController extends Controller
     {
         $texto=trim($request->get('texto'));
             $vehiculo=DB::table('vehiculo')
-            ->select('idvehiculo','idmarca','marca','modelo','patente','venta','descripcion','imagen','estado')
+            ->select('idvehiculo','idmarca','patente','marca','modelo','descripcion','imagen','estado','venta')
             ->where('marca','LIKE','%'.$texto.'%')
            
             ->orderBy('idmarca','asc')
@@ -52,7 +52,7 @@ class VehiculoController extends Controller
         $inputs   = $request->all() ;
   
         $vehiculo = new Vehiculo;
-        
+        $vehiculo->idmarca = $request->get('idmarca') ;
         $vehiculo->patente = $request->get('patente') ;
         $vehiculo->modelo = $request->get('modelo') ;
         $vehiculo->marca = $request->get('marca') ;
