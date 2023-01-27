@@ -25,18 +25,15 @@ class VehiculoController extends Controller
    
     public function index(Request $request)
     {
-        if ($request)
-        {
-            $texto=trim($request->get('texto'));
-            $vehiculo=DB::table('vehiculo as ve')
-            ->join('marca as m', 've.idmarca' , '=', 'm.idmarca')
-            ->select('ve.idvehiculo','ve.marca','ve.modelo','ve.patente','ve.venta','m.nombre as marca','m.descripcion','ve.imagen','ve.estado')
-            ->where('ve.marca','LIKE','%'.$texto.'%')
+        $texto=trim($request->get('texto'));
+            $vehiculo=DB::table('vehiculo')
+            ->select('idvehiculo','idmarca','marca','modelo','patente','venta','descripcion','imagen','estado')
+            ->where('marca','LIKE','%'.$texto.'%')
            
-            ->orderBy('ve.idmarca','asc')
-            ->paginate(10);
-            return view('alquiler.vehiculo.index', compact('vehiculo','texto'));
-        }
+            ->orderBy('idmarca','asc')
+            ->paginate(5);
+        return view('alquiler.vehiculo.index', compact('vehiculo','texto'));
+        
     }
 
 
