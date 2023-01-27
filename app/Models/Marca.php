@@ -1,39 +1,44 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Marca
+ * 
+ * @property int $idmarca
+ * @property string $nombre
+ * @property string|null $descripcion
+ * @property int $condicion
+ * 
+ * @property Collection|Vehiculo[] $vehiculos
+ *
+ * @package App\Models
+ */
 class Marca extends Model
 {
-    protected $table = 'marca';
+	protected $table = 'marca';
+	protected $primaryKey = 'idmarca';
+	public $timestamps = false;
 
-    protected $primaryKey = 'idmarca';
+	protected $casts = [
+		'condicion' => 'int'
+	];
 
-    public $timestamps=false;
+	protected $fillable = [
+		'nombre',
+		'descripcion',
+		'condicion'
+	];
 
-
-
-    protected $fillable = [
-        'nombre',
-        'descripcion',
-        'condicion'
-       
-        
-
-    ];
-
-
-
-
-    protected $guarded = [
-
-
-
-
-    ];
-
-
-    
+	public function vehiculos()
+	{
+		return $this->hasMany(Vehiculo::class, 'idmarca');
+	}
 }

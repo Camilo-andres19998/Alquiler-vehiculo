@@ -13,23 +13,82 @@
 			</div>
 			@endif
 
-			{!!Form::open(array('url'=>'/alquiler/vehiculo','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('url'=>'/alquiler/vehiculo','method'=>'POST','autocomplete'=>'off', 'files' => 'true'))!!}
             {{Form::token()}}
+
+			
+				<div class="col-lg-6 col-sm-6 col-md col-xs-12">
             <div class="form-group">
-            	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombre" class="form-control" placeholder="Nombre...">
+            	<label>Marca</label>
+            	<select name="marca" class="form-control">
+					@foreach ($marcas as $mar)
+					<option value="{{$mar->idmarca}}">{{$mar->nombre}}</option>
+					@endforeach
+				</select>
+			
             </div>
+			</div>
+
+			
+
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
             <div class="form-group">
             	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">
+            	<input type="text" name="descripcion" require value="{{old('descripcion')}}" class="form-control" placeholder="Descripción...">
             </div>
+			</div>
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+            <div class="form-group">
+            	<label for="estado">Estado</label>
+            	<input type="text" name="estado" require value="{{old('estado')}}" class="form-control" placeholder="Descripción...">
+            </div>
+			</div>
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+			<div class="form-group">
+            	<label for="patente">Patente</label>
+            	<input type="text" name="patente" value="{{old('patente')}}" class="form-control" placeholder="Descripción...">
+            </div>
+			</div>
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+			<div class="form-group">
+            	<label for="modelo">Modelo</label>
+            	<input type="text" name="modelo" value="{{old('modelo')}}" class="form-control" placeholder="Descripción...">
+            </div>
+			</div>
+
+
+		
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+			<div class="form-group">
+            	<label for="venta">Venta</label>
+            	<input type="text" name="venta" value="{{old('venta')}}" class="form-control" placeholder="Descripción...">
+            </div>
+			</div>
+
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+			<div class="form-group">
+			
+			<img src="" alt="">
+            	<input type="file"  name="imagen" class="form-control">
+				
+			
+            </div>
+			</div>
+
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
             <div class="form-group">
             	<button class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
-
+			
 			{!!Form::close()!!}		
             
-		</div>
-	</div>
+	
 @endsection

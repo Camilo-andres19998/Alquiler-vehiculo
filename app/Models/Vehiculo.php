@@ -1,34 +1,66 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Vehiculo
+ * 
+ * @property int $idvehiculo
+ * @property int|null $idmarca
+ * @property string|null $patente
+ * @property string $marca
+ * @property string $modelo
+ * @property string|null $descripcion
+ * @property string|null $imagen
+ * @property string $estado
+ * @property int|null $venta
+ * 
+ * @property Collection|DetalleHistorico[] $detalle_historicos
+ * @property Collection|DetalleVentum[] $detalle_venta
+ *
+ * @package App\Models
+ */
 class Vehiculo extends Model
 {
-    protected $table = 'vehiculo';
+	protected $table = 'vehiculo';
+	protected $primaryKey = 'idvehiculo';
+	public $timestamps = false;
 
-    protected $primaryKey = 'idvehiculo';
+	protected $casts = [
+		'idmarca' => 'int',
+		'venta' => 'int'
+	];
 
-    public $timestamps = false;
+	protected $fillable = [
+		'idmarca',
+		'patente',
+		'marca',
+		'modelo',
+		'descripcion',
+		'imagen',
+		'estado',
+		'venta'
+	];
 
+	public function marca()
+	{
+		return $this->belongsTo(Marca::class, 'idmarca');
+	}
 
-    protected $fillable = [
-        'idvehiculo',
-        'patente',
-        'marca',
-        'modelo',
-        'venta',
-        'descripcion',
-        'imagen',
-        'estado'
-    ];
+	public function detalle_historicos()
+	{
+		return $this->hasMany(DetalleHistorico::class, 'idvehiculo');
+	}
 
-
-   protected $guarded =[
-
-   ];
-
-
+	public function detalle_venta()
+	{
+		return $this->hasMany(DetalleVentum::class, 'idvehiculo');
+	}
 }

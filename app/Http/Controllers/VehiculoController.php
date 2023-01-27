@@ -9,7 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\VehiculoFormRequest;
-use App\Vehiculo;
+use App\Models\Vehiculo;
 use DB;
 
 
@@ -22,60 +22,66 @@ class VehiculoController extends Controller
     }
 
 
+   
     public function index(Request $request)
     {
         if ($request)
         {
-            $query=trim($request->get('searchText'));
-            $vehiculos=DB::table('vehiculo as ve')
+            $texto=trim($request->get('texto'));
+            $vehiculo=DB::table('vehiculo as ve')
             ->join('marca as m', 've.idmarca' , '=', 'm.idmarca')
-            ->select('ve.idvehiculo','ve.marca','ve.patente','ve.venta','m.nombre as marca','m.descripcion','ve.imagen','ve.estado')
-            ->where('ve.marca','LIKE','%'.$query.'%')
+            ->select('ve.idvehiculo','ve.marca','ve.modelo','ve.patente','ve.venta','m.nombre as marca','m.descripcion','ve.imagen','ve.estado')
+            ->where('ve.marca','LIKE','%'.$texto.'%')
            
             ->orderBy('ve.idmarca','asc')
-            ->paginate(7);
-            return view('alquiler.vehiculo.index',["vehiculos"=>$vehiculos,"searchText"=>$query]);
+            ->paginate(10);
+            return view('alquiler.vehiculo.index', compact('vehiculo','texto'));
         }
     }
 
 
     public function create()
     {
+        
         $marcas=DB::table('marca')->where('condicion','=','1')->get();
         return view("alquiler.vehiculo.create",["marcas"=>$marcas]);
     }
 
 
 
-    public function store (VehiculoFormRequest $request)
-    {
-        $vehiculo=new Vehiculo;
-        $vehiculo->idmarca=$request->get('idmarca');
-        $vehiculo->patente=$request->get('patente');
-        $vehiculo->marca=$request->get('marca');
-        $vehiculo->modelo=$request->get('modelo');
-        $vehiculo->venta=$request->get('venta');
-        $vehiculo->descripcion=$request->get('descripcion');
-        $vehiculo->estado='Activo';
+    public function store(VehiculoFormRequest $request)
+    {   
+    
+        $inputs   = $request->all() ;
+  
+        $vehiculo = new Vehiculo;
+        
+        $vehiculo->patente = $request->get('patente') ;
+        $vehiculo->modelo = $request->get('modelo') ;
+        $vehiculo->marca = $request->get('marca') ;
+        $vehiculo->venta = $request->get('venta') ;
+        $vehiculo->descripcion = $request->get('descripcion') ;
+        $vehiculo->estado = "Activo" ;
 
-        if (Input::hasFile('imagen')) {
-            $file=Input::file('imagen');
-            $file->move(public_path().'imagenes/vehiculos/',$file->getClientOriginalName());
-            $vehiculo->imagen=$file->getClientOriginalName();
-         }  
+        if ($request->HasFile('imagen')) {
+  
+            $file = $request->File('imagen');
 
-        $marca->save();
+            $file->move( public_path().'/imagenes/vehiculo/' , $file->getClientOriginalName() ) ;
+            $vehiculo->imagen = $file->getClientOriginalName() ;
+        }
+
+        $vehiculo->save();
         return Redirect::to('alquiler/vehiculo');
-
     }
 
+    
 
 
     public function show($id)
     {
         return view("alquiler.vehiculo.show",["vehiculo"=>Vehiculo::findOrFail($id)]);
     }
-
 
     
     public function edit($id)
@@ -120,7 +126,6 @@ class VehiculoController extends Controller
            return Redirect::to('alquiler/vehiculo');
        }
    
-
 
 
 }

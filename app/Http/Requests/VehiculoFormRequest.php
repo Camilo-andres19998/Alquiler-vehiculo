@@ -25,13 +25,12 @@ class VehiculoFormRequest extends FormRequest
     {
         return [
             
-          'idvehiculo' => 'required',
-          'patente' => 'required|max:50',
-          'marca'  => 'required|max:100',
-          'modelo' => 'required|max:100',
-          'venta' => 'required|numeric',
-          'descripcion' => 'max:512',
-          'imagen' => 'mimes:jpeg,bmp,png'
+            'patente'=>'required|max:50|unique:vehiculo',
+            'marca'=>'required|max:100',
+            'modelo'=>'required|max:256',
+            'venta'=>'required|numeric',
+            'descripcion'=>'max:512',
+            'imagen' => 'mimes:jpeg,jpg,png|max:1000'
 
 
         ];
