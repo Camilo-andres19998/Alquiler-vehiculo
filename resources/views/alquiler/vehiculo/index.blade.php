@@ -57,7 +57,7 @@
             <tr> 
 				
 			       <td>{{ $ve->idvehiculo}}</td>
-				
+				  
 					<td>{{ $ve->modelo}}</td>
 					<td>{{ $ve->patente}}</td>
 					

@@ -39,9 +39,8 @@ class Vehiculo extends Model
 	];
 
 	protected $fillable = [
-		'idmarca',
+		//'idmarca',
 		'patente',
-		'marca',
 		'modelo',
 		'descripcion',
 		'imagen',
