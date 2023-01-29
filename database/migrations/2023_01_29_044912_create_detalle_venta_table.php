@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detalle_venta', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('iddetalle_venta', true);
-            $table->integer('id_venta')->index('fk_detalle_venta_idx');
-            $table->integer('idvehiculo')->index('fk_detalle_venta_vehiculo_idx');
+            $table->unsignedBigInteger('iddetalle_venta');
+            $table->unsignedBigInteger('id_venta');
+            $table->increments('idvehiculo');
             $table->integer('cantidad');
-            $table->decimal('precio_venta', 11);
-            $table->decimal('descuento', 11);
+            $table->decimal('precio_venta', 11, 2);
+            $table->decimal('descuento', 11, 2);
+            $table->foreign('idvehiculo')->references('idvehiculo')->on('vehiculo')->onDelete('no action')->onUpdate('no action');
+            $table->foreign('id_venta')->references('idventa')->on('venta')->onDelete('no action')->onUpdate('no action');
         });
     }
 

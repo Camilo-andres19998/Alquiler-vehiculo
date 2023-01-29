@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de vehiculo <a href="vehiculo/create"><button class="btn btn-success">Nuevo</button></a></h3>
+		<h3>Listado de vehiculo <a href="ventas/create"><button class="btn btn-success">Nuevo</button></a></h3>
 		
 	</div>
 </div>
@@ -36,47 +36,40 @@
 	<table class="table table-striped table-bordered table-condensed table-hover">
       	<thead>
 		            <th>IdVehiculo</th>
-					<th>Modelo</th>
-					<th>Patente</th>
+					<th>Nombre</th>
+					<th>Tipo Doc</th>
 					
-					<th>Venta</th>
-					<th>Estado</th>
-					<th>Imagen</th>
+                    <th>Numero Doc</th>
+					<th>Telefono</th>
+					<th>Email</th>
 					<th>Opciones</th>
 					</tr>
 				</thead>
         <tbody>
-			@if(count($vehiculo)<=0)
-              <tr>
-				<td colspan="8">No hay resultados</td>
-			  </tr>
-			@else
-			@foreach ($vehiculo as $ve)
+		
+			@foreach ($persona as $per)
             <tr> 
 				
-			       <td>{{ $ve->idvehiculo}}</td>
+			       <td>{{ $per->idpersona}}</td>
 				  
-					<td>{{ $ve->modelo}}</td>
-					<td>{{ $ve->patente}}</td>
+                   <td>{{ $per->nombre}}</td>
+                   <td>{{ $per->tipo_documento}}</td>
+                   <td>{{ $per->num_documento}}</td>	
+                   <td>{{ $per->telefono}}</td>
+                   <td>{{ $per->email}}</td>
 					
-					<td>{{ $ve->venta}}</td>
-					<td>{{ $ve->estado}}</td>
-					<td>
-					<img src="{{asset('imagenes/vehiculo/'.$ve->imagen)}}" alt="{{ $ve->idvehiculo}}" height="100px" width="100px" class="img-thumbnail">
-                
-					<td>
-
-					<a href="{{route('vehiculo.edit', $ve->idvehiculo)}}"><button class="btn btn-info">Editar</button></a>
+                    <td>
+					<a href="{{route('ventas.edit', $per->idpersona)}}"><button class="btn btn-info">Editar</button></a>
 					<a href="" data-target="#modal-delete-" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 					</td>
 
 
 			</tr>
 @endforeach
-@endif
+
 </tbody>
 </table>
-{{$vehiculo->links()}}
+
  </div>
 	</div>
 		

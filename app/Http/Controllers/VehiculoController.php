@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\VehiculoFormRequest;
 use App\Models\Vehiculo;
+use App\Models\Marca;
 use DB;
 
 
@@ -25,17 +26,17 @@ class VehiculoController extends Controller
    
     public function index(Request $request)
     {
-     
+        
      if ($request)
      {
 
       $texto=trim($request->get('texto'));
       $vehiculo = DB::table('vehiculo as v')
-    ->leftJoin('marca as m', 'v.idmarca', '=', 'm.idmarca')
-    ->select('v.idvehiculo','v.modelo','v.patente','v.venta','m.nombre as marca','v.descripcion','v.imagen','v.estado')
-    ->where('v.modelo','LIKE','%'.$texto.'%')
-    ->orderBy('v.idvehiculo','asc')
-    ->paginate(7);
+     ->leftJoin('marca as m', 'v.idmarca', '=', 'm.idmarca')
+     ->select('v.idvehiculo','v.idmarca','v.modelo','v.patente','v.venta','m.nombre as marca','v.descripcion','v.imagen','v.estado')
+     ->where('v.modelo','LIKE','%'.$texto.'%')
+      ->orderBy('v.idvehiculo','asc')
+      ->paginate(7);
             return view('alquiler.vehiculo.index',["vehiculo"=>$vehiculo,"texto"=>$texto]);
      }
 
@@ -55,11 +56,12 @@ class VehiculoController extends Controller
     
         $inputs   = $request->all() ;
         //dd($inputs);
-        $vehiculo = new Vehiculo;
+        $vehiculo = new Vehiculo($request->all());
         $vehiculo->idvehiculo = $request->get('idvehiculo') ;
+        $vehiculo->idmarca = $request->idmarca;
         $vehiculo->patente = $request->get('patente') ;
         $vehiculo->modelo = $request->get('modelo') ;
-        //$vehiculo->marca = $request->get('marca') ;
+       
         $vehiculo->venta = $request->get('venta') ;
         $vehiculo->descripcion = $request->get('descripcion') ;
         $vehiculo->estado = "Activo" ;

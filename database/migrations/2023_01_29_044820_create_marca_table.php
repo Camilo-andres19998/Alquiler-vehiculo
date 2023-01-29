@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('ingreso', function (Blueprint $table) {
-            $table->foreign(['idmecanico'], 'fk_ingreso_persona')->references(['idpersona'])->on('persona')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+        Schema::create('marca', function (Blueprint $table) {
+            $table->bigIncrements('idmarca');
+            $table->string('nombre', 45);
+            $table->string('descripcion', 256)->nullable();
+            $table->tinyInteger('condicion')->unsigned()->default(1);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('ingreso', function (Blueprint $table) {
-            $table->dropForeign('fk_ingreso_persona');
-        });
+        Schema::dropIfExists('marca');
     }
 };

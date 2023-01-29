@@ -14,16 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('vehiculo', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('idvehiculo', true);
-            $table->integer('idmarca')->nullable()->index('fk_vehiculo_marca_idx');
+            $table->increments('idvehiculo');
+            $table->unsignedBigInteger('idmarca')->nullable();
             $table->string('patente', 50)->nullable();
-          //  $table->string('marca', 100);
-            $table->string('modelo', 100);
+            $table->string('modelo', 100)->nullable();
             $table->string('descripcion', 512)->nullable();
             $table->string('imagen', 50)->nullable();
-            $table->string('estado', 20);
-            $table->integer('venta')->nullable();
+            $table->string('estado', 20)->nullable();
+            $table->unsignedBigInteger('venta')->nullable();
+            $table->timestamps();
+    
+            $table->foreign('idmarca')
+                ->references('idmarca')
+                ->on('marca')
+                ->onDelete('set null');
         });
     }
 

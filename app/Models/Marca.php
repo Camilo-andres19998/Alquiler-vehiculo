@@ -37,8 +37,14 @@ class Marca extends Model
 		'condicion'
 	];
 
-	public function vehiculos()
-	{
-		return $this->hasMany(Vehiculo::class, 'idmarca');
+	//public function vehiculos()
+	//{
+//		return $this->hasMany(Vehiculo::class, 'idmarca');
+//	}
+
+
+
+	public function vehiculos(){
+		return $this->hasMany('App\Models\Vehiculo','idmarca','idmarca');
 	}
 }

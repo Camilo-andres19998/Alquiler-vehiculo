@@ -48,10 +48,13 @@ class Vehiculo extends Model
 		'venta'
 	];
 
+
+	
 	public function marca()
-	{
-		return $this->belongsTo(Marca::class, 'idmarca');
-	}
+    {
+        return $this->belongsTo(Marca::class, 'idmarca');
+    }
+
 
 	public function detalle_historicos()
 	{

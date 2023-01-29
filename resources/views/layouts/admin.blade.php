@@ -115,7 +115,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="/alquiler/ventas"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>
                        
@@ -194,7 +194,7 @@
           <b>Version</b> 2.3.0
         </div>
         <strong>Copyright &copy; 2015-2023 <a href="www.vehiculos.com">Vehiculos</a>.</strong> All rights reserved.
-      </footer>
+      </pie de página>
 
       
     <!-- jQuery 2.1.4 -->

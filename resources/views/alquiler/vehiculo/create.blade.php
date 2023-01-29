@@ -18,15 +18,14 @@
 
 			
 				<div class="col-lg-6 col-sm-6 col-md col-xs-12">
-            <div class="form-group">
-            	<label>Marca</label>
-            	<select name="marca" class="form-control">
-					@foreach ($marcas as $mar)
-					<option value="{{$mar->idmarca}}">{{$mar->nombre}}</option>
-					@endforeach
-				</select>
-			
-            </div>
+				<div class="form-group">
+  <label for="marca_id">Marca</label>
+  <select name="marca_id" class="form-control">
+    @foreach($marcas as $marca)
+      <option value="{{$marca->idmarca}}">{{$marca->nombre}}</option>
+    @endforeach
+  </select>
+</div>
 			</div>
 
 			

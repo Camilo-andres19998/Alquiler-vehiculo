@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('persona', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('idpersona', true);
+            $table->unsignedBigInteger('idpersona')->primary();
             $table->string('tipo_persona', 20);
             $table->string('nombre', 100);
             $table->string('tipo_documento', 20)->nullable();
@@ -23,6 +22,8 @@ return new class extends Migration
             $table->string('direccion', 70)->nullable();
             $table->string('telefono', 15)->nullable();
             $table->string('email', 50)->nullable();
+
+            $table->timestamps();
         });
     }
 

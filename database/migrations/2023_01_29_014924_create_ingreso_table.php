@@ -14,15 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ingreso', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('idingreso', true);
-            $table->integer('idmecanico')->index('fk_ingreso_persona_idx');
+            $table->bigIncrements('idingreso');
+            $table->unsignedBigInteger('idmecanico');
             $table->string('tipo_comprobante', 20);
             $table->string('serie_comprobante', 7)->nullable();
             $table->string('num_comprobante', 10);
             $table->dateTime('fecha_hora');
-            $table->decimal('impuesto', 4);
+            $table->decimal('impuesto', 4, 2);
             $table->string('estado', 45);
+            $table->foreign('idmecanico')->references('idpersona')->on('persona')->onDelete('no action')->onUpdate('no action');
+            $table->timestamps();
         });
     }
 
