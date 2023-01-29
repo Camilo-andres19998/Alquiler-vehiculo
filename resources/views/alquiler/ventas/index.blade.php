@@ -51,11 +51,12 @@
             <tr> 
 				
 			       <td>{{ $per->idpersona}}</td>
-				  
+				   <td>{{ $per->tipo_persona}}</td>
                    <td>{{ $per->nombre}}</td>
                    <td>{{ $per->tipo_documento}}</td>
                    <td>{{ $per->num_documento}}</td>	
                    <td>{{ $per->telefono}}</td>
+				   
                    <td>{{ $per->email}}</td>
 					
                     <td>
@@ -65,12 +66,14 @@
 
 
 			</tr>
+			@include('alquiler.ventas.modal')
 @endforeach
 
 </tbody>
 </table>
 
  </div>
+ {{$persona->render()}}
 	</div>
 		
 	

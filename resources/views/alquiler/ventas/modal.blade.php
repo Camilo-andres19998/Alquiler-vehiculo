@@ -1,7 +1,7 @@
 <div class="modal fade modal-slide-in-ight" aria-hidden="true" 
 role="dialog" tabindex="-1" id="modal-delete-">
 
-{!! Form::open(['method' => 'DELETE', 'route' => ['ventas.destroy', $persona->idpersona], 'idpersona' => 'form-delete']) !!}
+{!! Form::open(['method' => 'DELETE', 'route' => ['ventas.destroy', $per->idpersona], 'idpersona' => 'form-delete']) !!}
 
 <div class="modal-dialog">
 		<div class="modal-content">

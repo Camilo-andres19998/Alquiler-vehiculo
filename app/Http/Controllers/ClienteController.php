@@ -20,11 +20,21 @@ class ClienteController extends Controller
 
     public function index(Request $request)
     {
-       $persona=Persona::all();
-       return view('alquiler.ventas.index',compact('persona'));
+        if ($request){
+
+      
+       $texto=trim($request->get('texto'));
+       $persona=DB::table('persona')
+          ->select('idpersona','tipo_persona','nombre','tipo_documento','num_documento','telefono','email')
+          ->where('nombre','LIKE','%' .$texto. '%')
+          ->orWhere('num_documento','LIKE','%' .$texto. '%')
+          ->orderBy('idpersona','asc')
+          ->paginate(10);
+       return view('alquiler.ventas.index',["persona" =>$persona,"texto"=>$texto]);
         
     }
 
+}
 
     public function create()
     {
@@ -71,7 +81,7 @@ class ClienteController extends Controller
        public function destroy($id)
        {
            $persona=Persona::findOrFail($id);
-           $persona->condicion='0';
+           $persona->tipo_persona='Inactivo';
            $persona->update();
            return Redirect::to('alquiler/ventas');
        }
