@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Models\Persona;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\PersonaFormRequest;
+
 use DB;
 
 class ClienteController extends Controller
@@ -25,7 +26,7 @@ class ClienteController extends Controller
       
        $texto=trim($request->get('texto'));
        $persona=DB::table('persona')
-          ->select('idpersona','tipo_persona','nombre','tipo_documento','num_documento','telefono','email')
+          ->select('idpersona','tipo_persona','nombre','tipo_documento','num_documento','telefono','email','direccion')
           ->where('nombre','LIKE','%' .$texto. '%')
           ->orWhere('num_documento','LIKE','%' .$texto. '%')
           ->orderBy('idpersona','asc')
@@ -36,13 +37,15 @@ class ClienteController extends Controller
 
 }
 
+
     public function create()
     {
         return view("alquiler.ventas.create");
     }
-    public function store (PersonaRequest $request)
+    public function store (PersonaFormRequest $request)
     {
         $persona=new Persona;
+        $persona->idpersona = $request->get('idpersona') ;
         $persona->tipo_persona='Cliente';
         $persona->nombre=$request->get('nombre');
         $persona->tipo_documento=$request->get('tipo_documento');
@@ -85,7 +88,6 @@ class ClienteController extends Controller
            $persona->update();
            return Redirect::to('alquiler/ventas');
        }
-   
 
 
 
