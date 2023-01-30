@@ -19,12 +19,7 @@ php artisan key:generate
 php artisan serve
 ¡El proyecto de ejemplo de Laravel ya está en funcionamiento! Acceda a él en http://localhost:8000.
 
-Licencia
-Este software está licenciado bajo la licencia Apache 2, citada a continuación.
 
 
 
-Licenciado bajo la Licencia Apache, Versión 2.0 (la "Licencia"); no puede usar este proyecto excepto de conformidad con la Licencia. Puede obtener una copia de la Licencia en http://www.apache.org/licenses/LICENSE-2.0.
-
-A menos que lo exija la ley aplicable o se acuerde por escrito, el software distribuido bajo la Licencia se distribuye "TAL CUAL", SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ya sean expresas o implícitas. Consulte la Licencia para conocer el idioma específico que rige los permisos y limitaciones de la Licencia.
 
