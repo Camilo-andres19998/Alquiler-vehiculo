@@ -1,56 +1,34 @@
+Ejemplo Laravel
+Sitio web de muestra de Laravel con recuperación de contenido de prismic.io
+
+Este proyecto se ejecuta con Laravel versión 5.5.
+
+Empezar
+Suponiendo que ya ha instalado en su máquina: PHP (> = 7.0.0), Laravel, Composer y Node.js.
+
+# install dependencies
+composer install
 
 
-Laravel y MySQL README
-Introducción
-Este proyecto utiliza Laravel, un framework de PHP popular para el desarrollo de aplicaciones web, y MySQL como base de datos.
+# create .env file and generate the application key
+cp .env.example .env
+php artisan key:generate
 
-Requisitos
-PHP >= 7.2.5
-MySQL >= 5.7
-Compositor
-Instalación
-Descargar o clonar el repositorio en su equipo local.
-Instale las dependencias de Laravel ejecutando en la raíz del proyecto.composer install
-Copie el archivo a un nuevo archivo y configure las credenciales de su base de datos MySQL..env.example.env
-Ejecute para generar una clave de cifrado.php artisan key:generate
-Ejecute para crear las tablas en la base de datos.php artisan migrate
-Uso
-Inicie el servidor local con .php artisan serve
-Acceda a la aplicación en su navegador web en .http://localhost:8000
-Advertencia
-Este proyecto es solo para fines de demostración y no se recomienda su uso en entornos de producción sin una revisió
+# build CSS and JS assets
+npm run dev
+# or, if you prefer minified files
+npm run prod
+A continuación, inicie el servidor:
 
+php artisan serve
+¡El proyecto de ejemplo de Laravel ya está en funcionamiento! Acceda a él en http://localhost:8000.
 
-
-
-Camilo Andrés Manríquez
-mas completo
-Laravel y MySQL README
-Introducción
-Este proyecto utiliza Laravel, un framework de PHP popular para el desarrollo de aplicaciones web, y MySQL como base de datos. Laravel ofrece una estructura de aplicación organizada y un conjunto de herramientas y características útiles para facilitar el desarrollo de aplicaciones web dinámicas y escalables. MySQL es un sistema de gestión de bases de datos relacional conocido por su estabilidad, fiabilidad y facilidad de uso.
-
-Requisitos
-Antes de instalar y usar este proyecto, se necesitan los siguientes componentes en su sistema:
-
-PHP >= 7.2.5
-MySQL >= 5.7
-Composer, un gestor de paquetes para PHP.
-Instalación
-Siga los siguientes pasos para instalar y configurar este proyecto en su equipo local:
-
-Descargue o clone el repositorio en su equipo local.
-Abra la terminal en la raíz del proyecto y ejecute para instalar las dependencias de Laravel.composer install
-Copie el archivo a un nuevo archivo y configure las credenciales de su base de datos MySQL, incluyendo el nombre de la base de datos, el nombre de usuario y la contraseña..env.example.env
-Ejecute en la terminal para generar una clave de cifrado para su aplicación.php artisan key:generate
-Ejecute en la terminal para crear las tablas en su base de datos.php artisan migrate
-Uso
-Siga los siguientes pasos para usar y ejecutar este proyecto en su equipo local:
-
-Inicie el servidor local con el comando  en la terminal.php artisan serve
-Acceda a la aplicación en su navegador web en la dirección .http://localhost:8000
-Advertencia
-Este proyecto es solo para fines de demostración y no se recomienda su uso en entornos de producción sin una revisión exhaustiva y la implementación de medidas de seguridad adicionales. Asegúrese de tener copias de seguridad regulares de su base de datos y código fuente.
+Licencia
+Este software está licenciado bajo la licencia Apache 2, citada a continuación.
 
 
 
+Licenciado bajo la Licencia Apache, Versión 2.0 (la "Licencia"); no puede usar este proyecto excepto de conformidad con la Licencia. Puede obtener una copia de la Licencia en http://www.apache.org/licenses/LICENSE-2.0.
+
+A menos que lo exija la ley aplicable o se acuerde por escrito, el software distribuido bajo la Licencia se distribuye "TAL CUAL", SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ya sean expresas o implícitas. Consulte la Licencia para conocer el idioma específico que rige los permisos y limitaciones de la Licencia.
 
