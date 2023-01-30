@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::resource('alquiler/marca',  'App\Http\Controllers\MarcaController');
 Route::resource('alquiler/vehiculo',  'App\Http\Controllers\VehiculoController');
-
+Route::resource('alquiler/mecanico',  'App\Http\Controllers\MecanicoController');
 Route::resource('alquiler/ventas',  'App\Http\Controllers\ClienteController');
 //Route::get('/alquiler/marca', 'App\Http\Controllers\MarcaController@index');
 //Route::get('/alquiler/marca/create', 'App\Http\Controllers\MarcaController@create');
