@@ -11,8 +11,7 @@ use App\Http\Requests\PersonaFormRequest;
 
 use DB;
 
-
-class MecanicoController extends Controller
+class ClienteController extends Controller
 {
     public function __construct()
     {
@@ -27,12 +26,12 @@ class MecanicoController extends Controller
       
        $texto=trim($request->get('texto'));
        $persona=DB::table('persona')
-          ->where('nombre','LIKE','%' .$texto.'%')
-          ->where('tipo_persona','=', 'Mecanico')
+          ->select('idpersona','tipo_persona','nombre','tipo_documento','num_documento','telefono','email','direccion')
+          ->where('nombre','LIKE','%' .$texto. '%')
           ->orWhere('num_documento','LIKE','%' .$texto. '%')
           ->orderBy('idpersona','asc')
           ->paginate(10);
-       return view('alquiler.mecanico.index',["persona" =>$persona,"texto"=>$texto]);
+       return view('alquiler.ventas.index',["persona" =>$persona,"texto"=>$texto]);
         
     }
 
@@ -41,13 +40,13 @@ class MecanicoController extends Controller
 
     public function create()
     {
-        return view("alquiler.mecanico.create");
+        return view("alquiler.ventas.create");
     }
     public function store (PersonaFormRequest $request)
     {
         $persona=new Persona;
         $persona->idpersona = $request->get('idpersona') ;
-        $persona->tipo_persona='Mecanico';
+        $persona->tipo_persona='Cliente';
         $persona->nombre=$request->get('nombre');
         $persona->tipo_documento=$request->get('tipo_documento');
         $persona->num_documento=$request->get('num_documento');
@@ -56,7 +55,7 @@ class MecanicoController extends Controller
         $persona->email=$request->get('email');
         $persona->save();
 
-        return Redirect::to('alquiler/mecanico');
+        return Redirect::to('alquiler/ventas');
 
     }
 
@@ -64,23 +63,22 @@ class MecanicoController extends Controller
 
     public function show($id)
     {
-        return view("alquiler.mecanico.show",["persona"=>Persona::findOrFail($id)]);
+        return view("alquiler.ventas.show",["persona"=>Persona::findOrFail($id)]);
     }
 
 
     
     public function edit($id)
     {
-        return view("alquiler.mecanico.edit",["persona"=>Persona::findOrFail($id)]);
+        return view("alquiler.ventas.edit",["persona"=>Persona::findOrFail($id)]);
     }
 
 
 
     public function update(PersonaFormRequest $request,$id){
         $persona=Persona::findOrFail($id);
-        
         $persona->update($request->all());
-        return Redirect::to('alquiler/mecanico');
+        return Redirect::to('alquiler/ventas');
        }
 
        public function destroy($id)
@@ -88,14 +86,12 @@ class MecanicoController extends Controller
            $persona=Persona::findOrFail($id);
            $persona->tipo_persona='Inactivo';
            $persona->update();
-           return Redirect::to('alquiler/mecanico');
+           return Redirect::to('alquiler/ventas');
        }
 
 
 
 }
-
-
 
 
 

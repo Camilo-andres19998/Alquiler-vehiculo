@@ -72,6 +72,7 @@
 
 
 			</tr>
+			@include('alquiler.vehiculo.modal')
 @endforeach
 @endif
 </tbody>

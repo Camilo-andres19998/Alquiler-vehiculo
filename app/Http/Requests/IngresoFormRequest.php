@@ -13,7 +13,7 @@ class IngresoFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class IngresoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'idmecanico'=>'required',
+            'tipo_comprobante' => 'required|max:20',
+            'serie_comprobante' => 'max:7',
+            'num_comprobante' => 'required|max:10',
+            'idvehiculo' => 'required',
+            'cantidad' => 'required',
+            'precio_compra' => 'required',
+            'precio_venta' => 'required'
         ];
     }
 }

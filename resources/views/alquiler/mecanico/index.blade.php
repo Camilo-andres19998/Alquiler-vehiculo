@@ -1,3 +1,4 @@
+
 @extends ('layouts.admin')
 @section ('contenido')
 
@@ -9,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de mecanicos <a href="mecanico/create"><button class="btn btn-success">Nuevo</button></a></h3>
+		<h3>Listado de personas <a href="mecanico/create"><button class="btn btn-success">Nuevo</button></a></h3>
 		
 	</div>
 </div>
