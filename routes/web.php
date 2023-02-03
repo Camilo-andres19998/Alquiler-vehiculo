@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('alquiler/ingreso',  'App\Http\Controllers\IngresoController');
+
 Route::resource('alquiler/marca',  'App\Http\Controllers\MarcaController');
 Route::resource('alquiler/vehiculo',  'App\Http\Controllers\VehiculoController');
 Route::resource('alquiler/mecanico',  'App\Http\Controllers\MecanicoController');

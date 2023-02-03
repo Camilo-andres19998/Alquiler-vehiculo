@@ -32,7 +32,7 @@ class IngresoController extends Controller
        $texto=trim($request->get('texto'));
        $ingresos=DB::table('ingreso as i')
        ->join('persona as p','i.idmecanico','=','p.idpersona')
-       -join('detalle_historico as hi','i.idingreso','=','hi.idingreso')
+       ->join('detalle_historico as di','i.idingreso', '=', 'di.idingreso')
        ->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.impuesto','i.estado',DB::raw('sum(di.cantidad*precio_compra) as total'))
         ->where('i.num_comprobante','LIKE','%'.$texto. '%'.$texto.'%')
         ->orderBy('i.idingreso','asc')
@@ -46,9 +46,10 @@ class IngresoController extends Controller
 
 public function create(){
 
-    $personas=DB::table('persona')->where('tipo_persona','=','Mecanido')->get();
+    $personas=DB::table('persona')->where('tipo_persona','=','Mecanico')->get();
     $vehiculos = DB::table('vehiculo as v')
-    ->select(DB::raw('CONCAT(v.patente, " ",v.nombre) AS vehiculo'),'v.idvehiculo')
+    ->select(DB::raw('CONCAT(v.patente, " ",v.modelo) AS vehiculo'),'v.idvehiculo')
+    ->where('v.estado','=','Activo')
     ->get();
     return view("alquiler.ingreso.create", ["personas"=> $personas, "vehiculos" => $vehiculos]);
 }
@@ -61,7 +62,7 @@ public function store (IngresoFormRequest $request){
 
         DB::beginTransaction();
         $ingreso=new Ingreso;
-        $ingreso->idproveedor=$request->get('idproveedor');
+        $ingreso->idmecanico=$request->get('idmecanico');
         $ingreso->tipo_comprobante=$request->get('tipo_comprobante');
         $ingreso->serie_comprobante=$request->get('serie_comprobante');
         $ingreso->num_comprobante=$request->get('num_comprobante');

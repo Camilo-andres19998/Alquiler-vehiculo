@@ -1,0 +1,139 @@
+@extends ('layouts.admin')
+@section ('contenido')
+	<div class="row">
+	</div>
+	</div>
+		
+			@if (count($errors)>0)
+			
+				<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{$error}}</li>
+				@endforeach
+				</ul>
+			</div>
+			@endif
+
+			{!!Form::open(array('url'=>'/alquiler/ingreso','method'=>'POST','autocomplete'=>'off'))!!}
+            {{Form::token()}}
+
+         <div class="col-lg-6 col-sm-6 col-md col-xs-12">
+			<div class="form-group">
+            	<label for="mecanico">Mecanico</label>
+            	<select name="idmecanico" id="idmecanico" class="form-control selectpicker" data-live-search="true">
+					@foreach($personas as $persona)
+				    <option value="{{$persona->idpersona}}">{{$persona->nombre}}</option>
+					@endforeach
+        </select>
+        </div>
+	</div>
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+			<div class="form-group">
+            	<label>Tipo comprobante</label>
+            	<select name="tipo_comprobante" class="form-control">
+					<option value="Boleta">Boleta</option>
+					<option value="Factura">Factura</option>
+					<option value="Ticket">Ticket</option>
+				</select>
+            </div>
+
+			</div>
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+			<div class="form-group">
+            	<label for="serie_comprobante">Serie comprobante</label>
+            	<input type="text" name="serie_comprobante" class="form-control" value="{{old('serie_comprobante')}}" placeholder="Serie comprobante...">
+            </div>
+			</div>
+
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+			<div class="form-group">
+            	<label for="num_comprobante">Numero comprobante</label>
+            	<input type="text" name="num_comprobante"  class="form-control" required value="{{old('num_comprobante')}}" placeholder="Numero comprobante...">
+            </div>
+			</div>
+			</div>
+
+		
+            <div class="row">
+				<div class="panel panel-primary">
+                      <div class="panel-body">
+					  <div class="col-lg-12 col-sm-12 col-md col-xs-12">
+					  <div class="form-group">
+						<label >Vehiculo</label>
+						<select name="pidvehiculo" class="form-control selectpicker" id="pidvehiculo" data-live-search="true">
+                            @foreach($vehiculos as $vehiculo)
+                            <option value="{{$vehiculo->idvehiculo}}">{{$vehiculo->vehiculo}}</option>
+							@endforeach
+						</select>
+						
+					  </div>
+			
+				</div>
+				<div class="col-lg-3 col-sm-3 col-md col-xs-12">
+                   <div class="form-group">
+                         <label for="cantidad">Cantidad</label>
+						 <input type="number" name="pcantidad" id="pcantidad" class="form-control"
+						 placeholder="cantidad">
+				   </div>
+			</div>
+
+			<div class="col-lg-3 col-sm-3 col-md col-xs-12">
+                   <div class="form-group">
+                         <label for="cantidad">Precio compra</label>
+						 <input type="number" name="pprecio_compra" id="pprecio_compra" class="form-control"
+						 placeholder="P. compra">
+				   </div>
+			</div>
+			<div class="col-lg-3 col-sm-3 col-md col-xs-12">
+                   <div class="form-group">
+                         <label for="precio_venta">Precio venta</label>
+						 <input type="number" name="pprecio_venta" id="pprecio_venta" class="form-control"
+						 placeholder="cantidad">
+				   </div>
+			</div>
+
+			<div class="col-lg-3 col-sm-3 col-md col-xs-12">
+                   <div class="form-group">
+                 <button type="button" id="bt-add" class="btn btn-primary">Agregar</button>
+		 </div>
+		 </div>
+
+		 <div class="col-lg-10 col-sm-10 col-md col-xs-10">
+                   <div class="form-group">
+                <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+                   <thead style="background-color:#A9D0F5">
+                    <th>Vehiculo</th>
+				
+					<th>Precio compra</th>
+					<th>Precio venta</th>
+					<th>Subtotal</th>
+				   </thead>
+				<tfoot>
+                     <th>TOTAL</th>
+					 <th><h4 id="total">s/. 0.00</h4></th>
+				</tfoot>
+				<tbody>
+
+				</tbody>
+				</table>
+		 </div>
+		 </div>
+
+
+
+			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
+            <div class="form-group">
+				<input name="_token" value="{{csrf_token()}}" type="hidden"></input>
+            	<button class="btn btn-primary" type="submit">Guardar</button>
+            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            </div>
+			</div>
+			</div>
+			{!!Form::close()!!}		
+            
+		
+	
+@endsection
