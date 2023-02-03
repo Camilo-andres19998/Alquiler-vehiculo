@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\Ingreso;
+
 use App\Models\DetalleHistorico;
+
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\IngresoFormRequest;
@@ -26,23 +28,20 @@ class IngresoController extends Controller
 
     public function index(Request $request)
     {
-        if ($request){
-
-      
-       $texto=trim($request->get('texto'));
-       $ingresos=DB::table('ingreso as i')
-       ->join('persona as p','i.idmecanico','=','p.idpersona')
-       ->join('detalle_historico as di','i.idingreso', '=', 'di.idingreso')
-       ->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.impuesto','i.estado',DB::raw('sum(di.cantidad*precio_compra) as total'))
+        $texto = trim($request->get('texto'));
+        $ingresos=DB::table('ingreso as i')
+        ->leftJoin('persona as p','i.idmecanico','=','p.idpersona')
+        ->leftJoin('detalle_historico as di','i.idingreso', '=', 'di.idingreso')
+        ->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.impuesto','i.estado',DB::raw('sum(di.cantidad*precio_compra) as total'))
         ->where('i.num_comprobante','LIKE','%'.$texto. '%'.$texto.'%')
         ->orderBy('i.idingreso','asc')
         ->groupBy('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.impuesto','i.estado')
         ->paginate(7);
+    return view('alquiler.ingreso.index', ["ingresos" => $ingresos, "texto" => $texto]);
 
-        return view('alquiler.ingreso.index',["ingresos"=>$ingresos,"texto"=>$texto]);
     }
+    
 
-}
 
 public function create(){
 
@@ -53,6 +52,23 @@ public function create(){
     ->get();
     return view("alquiler.ingreso.create", ["personas"=> $personas, "vehiculos" => $vehiculos]);
 }
+
+
+
+
+public function edit($id)
+{
+    return view("alquiler.ingreso.edit",["ingreso"=>Ingreso::findOrFail($id)]);
+}
+
+
+
+public function update(IngresoFormRequest $request,$id){
+    $ingreso=Ingreso::findOrFail($id);
+    $ingreso->update($request->all());
+    return Redirect::to('alquiler/ingreso');
+   }
+
 
 
 

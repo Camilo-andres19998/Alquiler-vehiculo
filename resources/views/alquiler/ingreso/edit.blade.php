@@ -18,7 +18,7 @@
 			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
 			<div class="form-group">
             	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombre" class="form-control" value="{{$persona->nombre}}" placeholder="Nombre...">
+            	<input type="text" name="nombre" class="form-control" value="{{$ingreso->tipo_comprobante}}" placeholder="Nombre...">
             </div>
 
 			</div>
@@ -26,7 +26,7 @@
 			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
 			<div class="form-group">
             	<label for="direccion">Direccion</label>
-            	<input type="text" name="direccion" class="form-control" value="{{$persona->direccion}}" placeholder="Direccion...">
+            	<input type="text" name="direccion" class="form-control" value="{{$ingreso->serie_comprobante}}" placeholder="Direccion...">
             </div>
 			</div>
 
@@ -43,29 +43,10 @@
             </div>
 			</div>
 
-			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
-			<div class="form-group">
-            	<label for="num_documento">Numero documento</label>
-            	<input type="text" name="num_documento" class="form-control" value="{{$persona->num_documento}}" placeholder="Tipo documento...">
-            </div>
-			</div>
-
-			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
-			<div class="form-group">
-            	<label for="telefono">Telefono</label>
-            	<input type="text" name="telefono" class="form-control" value="{{$persona->telefono}}" placeholder="Telefono...">
-            </div>
-			</div>
+		
 
 
-			<div class="col-lg-6 col-sm-6 col-md col-xs-12">
-			<div class="form-group">
-            	<label for="email">Email</label>
-            	<input type="text" name="email" class="form-control" value="{{$persona->email}}" placeholder="Correo...">
-            </div>
-			</div>
-
-         
+		
 
 		
 			<div class="col-lg-6 col-sm-6 col-md col-xs-12">

@@ -1,7 +1,7 @@
 <div class="modal fade modal-slide-in-ight" aria-hidden="true" 
 role="dialog" tabindex="-1" id="modal-delete-">
 
-{!! Form::open(['method' => 'DELETE', 'route' => ['ingreso.destroy', $ing->idingreso], 'idingreso' => 'form-delete']) !!}
+{!! Form::open(['method' => 'DELETE', 'route' => ['ingreso.destroy', $in->idingreso], 'idingreso' => 'form-delete']) !!}
 
 <div class="modal-dialog">
 		<div class="modal-content">

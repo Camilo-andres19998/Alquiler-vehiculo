@@ -63,13 +63,12 @@
 					  <div class="col-lg-12 col-sm-12 col-md col-xs-12">
 					  <div class="form-group">
 						<label >Vehiculo</label>
-						<select name="pidvehiculo" class="form-control selectpicker" id="pidvehiculo" data-live-search="true">
-                            @foreach($vehiculos as $vehiculo)
-                            <option value="{{$vehiculo->idvehiculo}}">{{$vehiculo->vehiculo}}</option>
-							@endforeach
-						</select>
-						
-					  </div>
+						<select name="pidvehiculo" id="pidvehiculo" class="form-control selectpicker" data-live-search="true">
+					@foreach($vehiculos as $vehiculo)
+				    <option value="{{$vehiculo->idvehiculo}}">{{$vehiculo->vehiculos}}</option>
+					@endforeach
+        </select>
+        </div>
 			
 				</div>
 				<div class="col-lg-3 col-sm-3 col-md col-xs-12">
