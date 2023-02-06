@@ -21,8 +21,8 @@
 				<div class="form-group">
   <label for="marca_id">Marca</label>
   <select name="marca_id" class="form-control">
-    @foreach($marcas as $marca)
-      <option value="{{$marca->idmarca}}">{{$marca->nombre}}</option>
+    @foreach($marcas as $row)
+      <option value="{{$row->idmarca}}">{{$row->marca}}</option>
     @endforeach
   </select>
 </div>

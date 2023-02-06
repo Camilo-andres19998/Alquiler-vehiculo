@@ -22,25 +22,15 @@ class VehiculoController extends Controller
 
     }
 
-
-   
-    public function index(Request $request)
+    public function index()
     {
-        
-     if ($request)
-     {
-
-      $texto=trim($request->get('texto'));
-      $vehiculo = DB::table('vehiculo as v')
-     ->leftJoin('marca as m', 'v.idmarca', '=', 'm.idmarca')
-     ->select('v.idvehiculo','v.idmarca','v.modelo','v.patente','v.venta','m.nombre as marca','v.descripcion','v.imagen','v.estado')
-     ->where('v.modelo','LIKE','%'.$texto.'%')
-      ->orderBy('v.idvehiculo','asc')
-      ->paginate(7);
-            return view('alquiler.vehiculo.index',["vehiculo"=>$vehiculo,"texto"=>$texto]);
-     }
-
+        $vehiculos = Vehiculo::select('vehiculo.idvehiculo', 'vehiculo.idmarca', 'vehiculo.patente', 'vehiculo.modelo', 'vehiculo.descripcion', 'vehiculo.imagen', 'vehiculo.estado', 'vehiculo.venta')
+            ->leftJoin('marca', 'marca.idmarca', '=', 'vehiculo.idmarca')
+            ->get();
+        $marcas = Marca::all();
+        return view('alquiler.vehiculo.index', compact('vehiculos', 'marcas'));
     }
+
 
     public function create()
     {

@@ -92,11 +92,27 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/alquiler/vehiculo"><i class="fa fa-circle-o"></i> Vehiculos</a></li>
-                <li><a href="/alquiler/marca"><i class="fa fa-circle-o"></i> Marcas</a></li>
+                <li><a href="/alquiler/vehiculo"><i class="fa fa-circle-o"></i> Vehiculo</a></li>
+                <li><a href="/alquiler/marca"><i class="fa fa-circle-o"></i> Marca</a></li>
               </ul>
             </li>
             
+
+         
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-laptop"></i>
+                <span>Alquiler</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/alquiler/vehiculos"><i class="fa fa-circle-o"></i> Vehiculos</a></li>
+                <li><a href="/alquiler/marcas"><i class="fa fa-circle-o"></i> Marcas</a></li>
+              </ul>
+            </li>
+            
+
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>

@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::resource('alquiler/vehiculos',  'App\Http\Controllers\VehiculosController');
+Route::resource('alquiler/marcas',  'App\Http\Controllers\MarcasController');
+
+
 Route::resource('alquiler/ingreso',  'App\Http\Controllers\IngresoController');
 
 Route::resource('alquiler/marca',  'App\Http\Controllers\MarcaController');

@@ -36,6 +36,11 @@ class MarcaController extends Controller
     {
         return view("alquiler.marca.create");
     }
+
+
+
+
+    
     public function store (MarcaFormRequest $request)
     {
         $marca=new Marca;

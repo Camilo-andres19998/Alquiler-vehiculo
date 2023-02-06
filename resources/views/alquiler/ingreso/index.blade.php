@@ -6,7 +6,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<h3>Ingresos <a href="ingreso/ingreso"><button class="btn btn-success">Nuevo</button></a></h3>
+	@include('alquiler.ingreso.search')
 </head>
 <body>
 	<div class="container">
@@ -20,14 +21,13 @@
 				     <tr>
 
 					 <th>Fecha</th>
-					 <th>Mecanico</th>
-					 <th>Comprobante</th>
-					 <th>Serie comprobante</th>
-					 <th>Numero comprobante</th>
-					 <th>Impuesto</th>
+					 <th>Nombre dueño</th>
+					 <th>Vehiculo</th>
+					 <th>Modelo</th>
+					 <th>Marca vehiculo</th>
+					 <th>Año</th>
 					
-					 <th>Estado</th>
-					 <th>Total</th>
+					
 					 <th>Opciones</th>
 
 					 </tr>
@@ -37,13 +37,11 @@
                   <tr>
                     <td>{{ $in->fecha_hora  }}</td>
 					<td>{{ $in->nombre  }}</td>
-					<td>{{ $in->tipo_comprobante}}</td>
-					<td>{{ $in->serie_comprobante}}</td>
-					<td>{{ $in->num_comprobante}}</td>
-					<td>{{ $in->impuesto}}</td>
+					<td>{{ $in->nombre  }}</td>
+					<td>{{ $in->nombre  }}</td>
+					<td>{{ $in->nombre  }}</td>
+					<td>{{ $in->nombre  }}</td>
 					
-					<td>{{ $in->estado}}</td>
-					<td>{{ $in->total}}</td>
 					<td>
 
 					<a href="{{route('ingreso.edit', $in->idingreso)}}"><button class="btn btn-info">Detalles</button></a>
@@ -51,6 +49,7 @@
 
 					</td>
 				  </tr>
+				  @include('alquiler.ingreso.modal')
             @endforeach
 			</table>
 		  </div>

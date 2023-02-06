@@ -46,12 +46,12 @@
 					</tr>
 				</thead>
         <tbody>
-			@if(count($vehiculo)<=0)
+			@if(count($vehiculos)<=0)
               <tr>
 				<td colspan="8">No hay resultados</td>
 			  </tr>
 			@else
-			@foreach ($vehiculo as $ve)
+			@foreach ($vehiculos as $ve)
             <tr> 
 				
 			       <td>{{ $ve->idvehiculo}}</td>
@@ -77,7 +77,7 @@
 @endif
 </tbody>
 </table>
-{{$vehiculo->links()}}
+
  </div>
 	</div>
 		

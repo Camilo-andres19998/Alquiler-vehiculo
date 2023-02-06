@@ -92,6 +92,3 @@ class ClienteController extends Controller
 
 
 }
-
-
-

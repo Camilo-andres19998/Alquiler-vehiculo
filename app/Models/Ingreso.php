@@ -57,6 +57,15 @@ class Ingreso extends Model
 		return $this->belongsTo(Persona::class, 'idmecanico');
 	}
 
+
+	public function vehiculo()
+	{
+		return $this->belongsTo(Vehiculo::class, 'idvehiculo');
+	}
+
+
+
+
 	public function detalle_historicos()
 	{
 		return $this->hasMany(DetalleHistorico::class, 'idingreso');

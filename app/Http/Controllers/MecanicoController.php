@@ -11,7 +11,7 @@ use App\Http\Requests\PersonaFormRequest;
 
 use DB;
 
-class ClienteController extends Controller
+class MecanicoController extends Controller
 {
     public function __construct()
     {
